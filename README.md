@@ -1,4 +1,4 @@
-# 🚀 Konversi CSS ke SCSS (7-1 Pattern) - Tugas Portofolio
+# 🚀 Konversi CSS ke SCSS (7-1 Pattern) - Tugas 4
 
 Proyek ini adalah tugas mata kuliah Pemrograman Web (Pertemuan 2) yang berfokus pada refactoring atau konversi kode CSS murni (*vanilla*) menjadi arsitektur **SCSS** yang lebih rapi dan modular menggunakan standar **7-1 Pattern**.
 
