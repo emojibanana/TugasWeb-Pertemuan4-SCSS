@@ -1,0 +1,20 @@
+// 1. Mixins untuk flexbox tengah
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// 2. Mixins untuk uppercase text h1 dan h2
+@mixin title-text {
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+// 3. Mixins untuk responsive (mobile-first)
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}

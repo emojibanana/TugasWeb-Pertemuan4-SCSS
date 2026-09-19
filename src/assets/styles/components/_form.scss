@@ -1,0 +1,37 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+input[type="text"], input[type="email"], textarea {
+    width: 80%;
+    padding: v.$space-sm;
+    margin-top: 10px;
+    margin-bottom: v.$space-md;
+    border: 1px solid v.$border-color;
+    border-radius: 5px;
+    font-size: 1rem;
+
+    // Memanggil mixin responsive
+    @include m.mobile {
+        font-size: 0.9rem;
+    }
+}
+
+button {
+    background-color: v.$primary-color;
+    color: white;
+    padding: v.$space-sm v.$space-md;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+        background-color: v.$secondary-color;
+    }
+
+    // Memanggil mixin responsive
+    @include m.mobile {
+        font-size: 0.9rem;
+        padding: v.$space-sm v.$space-sm;
+    }
+}

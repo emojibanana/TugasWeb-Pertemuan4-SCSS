@@ -1,0 +1,28 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: v.$space-lg;
+
+    &, th, td {
+        padding: v.$space-sm;
+        text-align: left;
+        border-bottom: 1px solid v.$border-color;
+    }
+
+    th, td {
+        padding: v.$space-sm;
+        text-align: left;
+    }
+
+    // Memanggil mixin responsive
+    @include m.mobile {
+        font-size: 0.9rem;
+
+        th, td {
+            padding: v.$space-xs;
+        }
+    }
+}

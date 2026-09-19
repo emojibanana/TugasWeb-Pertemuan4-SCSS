@@ -1,0 +1,45 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+
+header {
+    background-color: v.$primary-color;
+    color: white;
+    padding: v.$space-md;
+    text-align: center;
+
+    // Memanggil mixin responsive
+    @include m.mobile {
+        padding: v.$space-sm;
+    }
+}
+
+nav {
+    background-color: v.$primary-color;
+    padding: v.$space-md;
+
+    // level 1: Navigasi List
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 30px 0;
+        @include m.flex-center;
+
+        // level 2: Navigasi Item
+        li {
+            margin: v.$space-md;
+            cursor: pointer;
+        
+            // level 3: Navigasi Link
+            a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+
+                &:hover {
+                    text-decoration: v.$secondary-color;
+                }
+            }
+        }
+    }
+}

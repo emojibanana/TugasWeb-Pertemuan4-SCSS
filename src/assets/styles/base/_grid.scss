@@ -1,0 +1,29 @@
+@use '../abstracts/mixins' as m;
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    //looping 1 sampai 12 untuk membuat class col-1 sampai col-12
+    @for $i from 1 through 12 {
+        .col-md-#{$i} {
+            padding: 0 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            margin: 0 auto;
+       
+
+            // Memanggil mixin responsive
+            @include m.mobile {
+                padding: 0 10px;
+            } 
+        }    
+    }
+}

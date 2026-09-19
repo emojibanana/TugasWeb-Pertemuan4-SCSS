@@ -1,0 +1,20 @@
+// 1. Abstract (Tidak menghasilkan CSS langsung, hanya untuk digunakan di file lain
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+
+// 2. Base (CSS dasar, seperti reset, typography, dll)
+@use 'base/grid';
+@use 'base/utilities';
+@use 'base/typography';
+@use 'base/reset';
+
+// 3. Components (CSS untuk komponen spesifik, seperti card, button, dll)
+@use 'components/table';
+@use 'components/form';
+
+// 4. Layout (CSS untuk layout, seperti navbar, footer, dll)
+@use 'layout/navbar';
+@use 'layout/footer';
+
+// 5. Pages (CSS untuk halaman spesifik, jika ada)
+@use 'pages/dashboard';
