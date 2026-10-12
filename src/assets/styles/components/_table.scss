@@ -3,18 +3,52 @@
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 8px 0 4px;
     margin-bottom: v.$space-lg;
+    background: v.$card;
+    border: 1px solid v.$line;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px -12px rgba(15, 23, 42, 0.18);
+    font-size: 15px;
 
     &, th, td {
-        padding: v.$space-sm;
-        text-align: left;
-        border-bottom: 1px solid v.$border-color;
+        border: none;
     }
 
     th, td {
-        padding: v.$space-sm;
+        padding: 12px 16px;
         text-align: left;
+    }
+
+    tr td:first-child {
+        font-weight: 700;
+        color: v.$navy;
+        width: 38%;
+        background: #f8fafc;
+        white-space: nowrap;
+    }
+
+    tr td:last-child {
+        color: #334155;
+    }
+
+    tr:not(:last-child) td {
+        border-bottom: 1px solid v.$line;
+    }
+
+    tr {
+        transition: background 0.2s ease;
+
+        &:hover td {
+            background: #eff6ff;
+        }
+
+        &:hover td:first-child {
+            background: #dbeafe;
+        }
     }
 
     // Memanggil mixin responsive
@@ -23,6 +57,11 @@ table {
 
         th, td {
             padding: v.$space-xs;
+        }
+
+        tr td:first-child {
+            width: 42%;
+            white-space: normal;
         }
     }
 }

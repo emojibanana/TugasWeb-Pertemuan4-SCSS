@@ -3,9 +3,9 @@
 
 
 header {
-    background-color: v.$primary-color;
+    background-color: rgba(15, 23, 42, 0.92);
     color: white;
-    padding: v.$space-md;
+    padding: 0;
     text-align: center;
 
     // Memanggil mixin responsive
@@ -15,19 +15,19 @@ header {
 }
 
 nav {
-    background-color: v.$primary-color;
+    background-color: transparent;
     padding: v.$space-md;
 
     // level 1: Navigasi List
     ul {
         list-style: none;
         padding: 0;
-        margin: 30px 0;
+        margin: 0;
         @include m.flex-center;
 
         // level 2: Navigasi Item
         li {
-            margin: v.$space-md;
+            margin: 0;
             cursor: pointer;
         
             // level 3: Navigasi Link
@@ -35,9 +35,17 @@ nav {
                 color: white;
                 text-decoration: none;
                 font-weight: bold;
+                display: inline-block;
+                border-radius: 999px;
+                padding: 8px 16px;
+                font-size: 0.875rem;
+                letter-spacing: 0.02em;
+                transition: background 0.2s ease, color 0.2s ease;
 
                 &:hover {
-                    text-decoration: v.$secondary-color;
+                    background: rgba(255, 255, 255, 0.1);
+                    color: #7dd3fc;
+                    text-decoration: none;
                 }
             }
         }

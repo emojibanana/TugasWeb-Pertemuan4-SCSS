@@ -1,63 +1,83 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>tugas4_scss</title>
+    <meta name="description" content="Biodata Ahmad Al Banna — Mahasiswa Ilmu Komputer UNIMED" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        card: '0 10px 30px -10px rgba(15, 23, 42, 0.15)',
+                        pop: '0 8px 20px -6px rgba(37, 99, 235, 0.45)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preload" as="image" href="src/assets/vergil.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>Ahmad Al Banna — Biodata | Ilmu Komputer UNIMED</title>
   </head>
   <script type="module" src="src/main.js"></script>
-  <body>
-   <header>
-        <nav>
-            <ul>
-                <li><a href="#tentang">Tentang</a></li>
-                <li><a href="#informasi">Informasi Pribadi</a></li>
-                <li><a href="#pendidikan">Riwayat Pendidikan</a></li>
+  <body class="antialiased">
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-900/90 text-white shadow-lg backdrop-blur">
+        <nav class="mx-auto max-w-4xl px-4">
+            <ul class="flex items-center justify-center gap-2 py-3 sm:gap-4">
+                <li class="mx-auto"><a href="#tentang" class="rounded-full px-4 py-2 text-sm font-semibold tracking-wide transition hover:bg-white/10 hover:text-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-400">Tentang</a></li>
+                <li class="mx-auto"><a href="#informasi" class="rounded-full px-4 py-2 text-sm font-semibold tracking-wide transition hover:bg-white/10 hover:text-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-400">Informasi</a></li>
+                <li class="mx-auto"><a href="#pendidikan" class="rounded-full px-4 py-2 text-sm font-semibold tracking-wide transition hover:bg-white/10 hover:text-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-400">Pendidikan</a></li>
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="mx-auto w-full max-w-4xl px-4 pb-4 sm:px-6">
 
-    <h1>🗿Biodata</h1>
-    <figure>
-        <img src="src/assets/poto_khusus.jpeg" alt="Gambar Profil" width="200">
-        <figcaption class="text-lg font-semibold">Ahmad Al Banna</figcaption>
-    </figure>
+        <section id="tentang" class="mt-6 rounded-3xl border border-white/60 bg-white/85 p-6 shadow-card backdrop-blur sm:p-10">
+            <h1 class="badge-title">🗿 Biodata</h1>
+            <figure class="flex flex-col items-center gap-6 text-center md:flex-row md:text-left">
+                <span class="avatar-wrap" title="Arahkan kursor untuk melihat Vergil"><img src="src/assets/poto_khusus.jpeg" alt="Foto Profil Ahmad Al Banna" width="200" height="200" loading="lazy" class="profile-base"><span class="lens" aria-hidden="true"><img src="src/assets/vergil.png" alt="" width="200" height="200" loading="lazy"></span></span>
+                <figcaption class="ml-0 md:ml-4"><b class="name-gradient text-4xl sm:text-5xl">Ahmad Al Banna</b>
+                <p class="bio-text font-semibold">Halo! Perkenalkan, saya mahasiswa UNIMED dengan program studi Ilmu Komputer.
+                Saya juga tertarik pada bidang desain dan AI,
+                saya memiliki mimpi untuk menjadi seorang profesional di bidang teknologi. </p>
+                <span class="chip-row">
+                  <span class="chip">🎓 UNIMED</span>
+                  <span class="chip">💻 Ilmu Komputer</span>
+                  <span class="chip">🎨 Desain & AI</span>
+                </span>
+            </figcaption>
+            </figure>
+        </section>
 
-    <section id="tentang">
-        <h2>Tentang Saya</h2>
-    <p>Perkenalkan, saya Ahmad Al Banna. Saya seorang mahasiswa jurusan Ilmu Komputer.
-        Saya memiliki minat yang besar dalam pengembangan perangkat lunak dan teknologi informasi,
-        dan saya berharap dapat berkembang dalam bidang ini. Saya juga tertarik pada bidang desain dan AI,
-        saya memiliki mimpi untuk menjadi seorang profesional di bidang teknologi.
-    </p>
-    </section>
-
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-md-1">
+        <div class="mb-6 mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+            <div class="social-card bg-gradient-to-br from-fuchsia-600 to-pink-600 hover:from-fuchsia-700 hover:to-pink-700 rounded-2xl text-center text-white transition-all duration-200 shadow-card">
                 <button class="btn btn-primary" onclick="window.location.href='https://www.instagram.com/ahmadal_banna/'">Instagram</button>
             </div>
-            <div class="col-md-1">
+            <div class="social-card bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-2xl text-center text-white transition-all duration-200 shadow-card">
                 <button class="btn btn-primary" onclick="window.location.href='https://www.facebook.com/ahmadal.banna.7'">Facebook</button>
             </div>
-            <div class="col-md-1">
+            <div class="social-card bg-gradient-to-br from-slate-900 to-slate-800 hover:from-black hover:to-neutral-900 rounded-2xl text-center text-white transition-all duration-200 shadow-card">
                 <button class="btn btn-primary" onclick="window.location.href='https://www.twitter.com/ahmadal_banna/'">Twitter</button>
             </div>
-            <div class="col-md-1">
+            <div class="social-card bg-gradient-to-br from-sky-600 to-cyan-600 hover:from-sky-700 hover:to-cyan-700 rounded-2xl text-center text-white transition-all duration-200 shadow-card">
                 <button class="btn btn-primary" onclick="window.location.href='https://www.linkedin.com/in/ahmadal-banna/'">LinkedIn</button>
             </div>
-            <div class="col-md-1">
+            <div class="social-card bg-gradient-to-br from-rose-600 to-red-700 hover:from-rose-700 hover:to-red-800 rounded-2xl text-center text-white transition-all duration-200 shadow-card">
                 <button class="btn btn-primary" onclick="window.location.href='https://www.youtube.com/@ahmadalbanna'">YouTube</button>
             </div>
-            <div class="col-md-1">
+            <div class="social-card bg-gradient-to-br from-gray-900 to-zinc-800 hover:from-black hover:to-zinc-900 rounded-2xl text-center text-white transition-all duration-200 shadow-card">
                 <button class="btn btn-primary" onclick="window.location.href='https://www.tiktok.com/@ahmadal_banna'">TikTok</button>
-            </div> 
+            </div>
         </div>
-    </div>
 
-    <section id="informasi">
+    <section id="informasi" class="rounded-3xl border border-white/60 bg-white/85 p-6 shadow-card backdrop-blur sm:p-8">
         <h2>👉 Informasi Pribadi 🫵</h2>
     <table>
         <tr>
@@ -78,7 +98,7 @@
         </tr>
         <tr>
             <td>Hobi</td>
-            <td>: Main Game</td>
+            <td>: Desain</td>
         </tr>
         <tr>
             <td>Program Studi</td>
@@ -103,25 +123,91 @@
     </table>
     </section>
 
-    <section id ="pendidikan">
-        <h2>🏫Riwayat Pendidikan</h2>
-        <ul>
+    <section id="pendidikan" class="mt-6 rounded-3xl border border-white/60 bg-white/85 p-6 shadow-card backdrop-blur sm:p-8">
+        <h2>🏫 Riwayat Pendidikan</h2>
+    <center>
+        <ul class="edu-list">
             <li>SDN 060870</li>
             <li>SMPN 27 Medan</li>
             <li>SMK Tritech Information Medan</li>
         </ul>
+    </center>
     </section>
 
-    <footer>
-    <section id="kontak">
+    </main>
+
+    <footer class="mx-auto mt-6 w-full max-w-4xl rounded-t-3xl px-4 pb-6 sm:px-6">
+    <section id="kontak" class="rounded-3xl p-6 sm:p-8">
         <h2>📞 Kontak</h2>
         <p>Jika Anda ingin menghubungi saya, silakan kirim email ke ahmadbanna1709@gmail.com</p>
         <p>masukkan email Anda di bawah ini:</p>
         <input type="email" placeholder="Masukkan email Anda">
         <input type="text" placeholder="Masukkan pesan Anda"><br>
-        <button>Kirim Pesan</button><br>
+        <button type="button">Kirim Pesan</button><br>
     </section>
-     <p>&copy; 2024 Ahmad Al Banna. All rights reserved.</p>
-    </footer>  
+     <p class="copyright">&copy; 2024 Ahmad Al Banna. All rights reserved.</p>
+    </footer>
+<script>
+/* Lensa Vergil mengikuti mouse (port dari TR1&2_porto) */
+(function () {
+    var wrap = document.querySelector('.avatar-wrap');
+    if (!wrap) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        wrap.classList.add('avatar-simple');
+        return;
+    }
+    var tx = 0, ty = 0, tr = 0;
+    var cx = 0, cy = 0, cr = 0;
+    var hovering = false, raf = null;
+
+    function lensSize() {
+        return Math.round(wrap.clientWidth * 0.55);
+    }
+    function point(e) {
+        var r = wrap.getBoundingClientRect();
+        return [e.clientX - r.left, e.clientY - r.top];
+    }
+    function loop() {
+        cx += (tx - cx) * 0.4;
+        cy += (ty - cy) * 0.4;
+        cr += (tr - cr) * 0.14;
+        if (Math.abs(tx - cx) < 0.1) cx = tx;
+        if (Math.abs(ty - cy) < 0.1) cy = ty;
+        if (Math.abs(tr - cr) < 0.3) cr = tr;
+        wrap.style.setProperty('--lx', (cx - cr / 2).toFixed(1) + 'px');
+        wrap.style.setProperty('--ly', (cy - cr / 2).toFixed(1) + 'px');
+        wrap.style.setProperty('--d', Math.max(0, cr).toFixed(1) + 'px');
+        if (hovering || cr > 0.3 || cx !== tx || cy !== ty) {
+            raf = requestAnimationFrame(loop);
+        } else {
+            raf = null;
+        }
+    }
+    function start() {
+        if (!raf) raf = requestAnimationFrame(loop);
+    }
+    wrap.addEventListener('pointerenter', function (e) {
+        var p = point(e);
+        tx = p[0]; ty = p[1];
+        cx = tx; cy = ty;
+        tr = lensSize();
+        hovering = true;
+        wrap.classList.add('is-hover');
+        start();
+    });
+    wrap.addEventListener('pointermove', function (e) {
+        if (!hovering) return;
+        var p = point(e);
+        tx = p[0]; ty = p[1];
+        start();
+    });
+    wrap.addEventListener('pointerleave', function () {
+        hovering = false;
+        tr = 0;
+        wrap.classList.remove('is-hover');
+        start();
+    });
+})();
+</script>
   </body>
 </html>

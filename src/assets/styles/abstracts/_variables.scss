@@ -1,11 +1,21 @@
-// Warna
-$primary-color: #4f46e5;
+// Warna — diselaraskan dengan TR1&2_porto/style.css (:root)
+$primary-color: #2563eb;
 $secondary-color: #64748b;
 $bg-color: #f8fafc;
 $text-color: #1e293b;
-$border-color: #ccc;
+$border-color: #e2e8f0;
 $btn-color: #0582af;
-$color-muted: #555;
+$color-muted: #64748b;
+
+// Token tambahan dari TR1&2 (nama sama dengan --* di style.css)
+$navy: #0f172a;
+$primary-2: #4f46e5;
+$sky: #0ea5e9;
+$ink: #1e293b;
+$muted: #64748b;
+$card: #ffffff;
+$line: #e2e8f0;
+$radius: 1.5rem;
 
 //spacing
 $space-xs: 4px;

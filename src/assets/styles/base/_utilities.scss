@@ -14,3 +14,16 @@ $margins: (
         margin-bottom: $value;
     }
 }
+
+// helper yang dipakai index.html TR4 (setara Tailwind mt-4)
+.mt-4 {
+    margin-top: 24px;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+}
+
+.font-semibold {
+    font-weight: 600;
+}

@@ -1,31 +1,163 @@
 @use '../abstracts/mixins' as m;
+@use '../abstracts/variables' as v;
 
+main {
+    width: 100%;
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 0 1rem 1rem;
+}
 
+// Foto profil fallback (kalau tanpa .avatar-wrap)
 img {
     max-width: 100%;
     height: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 50px;
+}
+
+// ===== Sistem lensa Vergil (port dari TR1&2_porto/style.css) =====
+// Cara kerja: .avatar-wrap lingkaran 200px berisi foto asli (.profile-base)
+// + .lens (lingkaran Vergil diameter --d, posisi --lx/--ly mengikuti mouse
+// via JS lerp). Hover = lensa membesar halus, leave = mengecil ke 0.
+.avatar-wrap {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    --lx: 50px;
+    --ly: 50px;
+    --d: 0px;
+    --as: 200px;
+    box-shadow: 0 18px 40px -12px rgba(37, 99, 235, 0.45), 0 0 0 5px #fff, 0 0 0 9px #dbeafe;
+    transition: box-shadow 0.5s ease;
+    -webkit-tap-highlight-color: transparent;
+
+    @media (hover: hover) {
+        cursor: crosshair;
+    }
+
+    .profile-base {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        margin: 0;
+        border: 0;
+    }
+
+    .lens {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: var(--d);
+        height: var(--d);
+        transform: translate(var(--lx), var(--ly));
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: inset 0 0 18px 7px rgba(2, 6, 23, 0.5);
+        pointer-events: none;
+        will-change: transform, width, height;
+
+        img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: var(--as);
+            height: var(--as);
+            max-width: none;
+            object-fit: cover;
+            display: block;
+            transform: translate(calc(var(--lx) * -1), calc(var(--ly) * -1));
+            filter: saturate(1.15) brightness(1.03);
+            will-change: transform;
+        }
+    }
+
+    &.is-hover {
+        box-shadow: 0 18px 40px -12px rgba(37, 99, 235, 0.45), 0 0 0 5px #fff, 0 0 0 9px #7dd3fc;
+    }
+
+    // Fallback reduced-motion / touch: ganti foto penuh saat hover/tap
+    &.avatar-simple .lens {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transform: none;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        box-shadow: none;
+
+        img {
+            transform: none;
+        }
+    }
+
+    &.avatar-simple:hover .lens,
+    &.avatar-simple:active .lens {
+        opacity: 1;
+    }
+
+    @include m.mobile {
+        width: 160px;
+        height: 160px;
+        --as: 160px;
+    }
 }
 
 figure {
-    margin: 0;
+    margin: 6px 0 4px;
     padding: 0;
     text-align: center;
 }
 
 figcaption {
     font-size: 1rem;
+    font-style: normal;
     margin-top: 10px;
-    color: #666;
+    color: v.$muted;
     text-align: center;
+    font-weight: 600;
 }
 
+// ===== Chips (UNIMED / Ilmu Komputer / Desain & AI) =====
+.chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+        justify-content: flex-start;
+    }
+}
+
+.chip {
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 7px 12px;
+    border-radius: 999px;
+    color: #1d4ed8;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+}
+
+// ===== Kartu section (Tentang / Informasi / Pendidikan / Kontak) =====
 section{
     @include m.flex-center;
     flex-direction: column;
+    @include m.card;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: center;
 
     li {
         flex-direction: row;
@@ -35,8 +167,82 @@ section{
 
     p {
         font-size: 1.2rem;
+        line-height: 1.7;
         margin: 10px 10px;
         margin-bottom: 20px;
+        color: #334155;
+        max-width: 42rem;
+    }
+
+    // Daftar pendidikan default (legacy TR4: section ul)
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 10px auto 4px;
+        display: grid;
+        gap: 12px;
+        width: 100%;
+        max-width: 560px;
+    }
+
+    ul li,
+    .edu-list li {
+        position: relative;
+        background: linear-gradient(180deg, #fff, #f8fafc);
+        border: 1px solid v.$line;
+        border-radius: 16px;
+        padding: 14px 16px 14px 52px;
+        font-weight: 700;
+        font-size: 1rem;
+        color: v.$navy;
+        text-align: left;
+        box-shadow: 0 8px 20px -12px rgba(15, 23, 42, 0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+        &::before {
+            content: "🎓";
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            display: grid;
+            place-items: center;
+            background: #dbeafe;
+            border-radius: 999px;
+            font-size: 15px;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 27px;
+            top: 100%;
+            width: 2px;
+            height: 12px;
+            background: #bfdbfe;
+        }
+
+        &:last-child::after {
+            display: none;
+        }
+
+        &:hover {
+            transform: translateX(4px);
+            border-color: #93c5fd;
+            box-shadow: 0 12px 26px -12px rgba(37, 99, 235, 0.4);
+        }
+    }
+
+    // .edu-list TR1&2: wrapper grid yang sama
+    .edu-list {
+        list-style: none;
+        padding: 0;
+        margin: 10px auto 4px;
+        display: grid;
+        gap: 12px;
+        max-width: 560px;
     }
 
     button {
@@ -50,6 +256,88 @@ section{
 
         &:hover {
             background-color: #0056b3;
+        }
+    }
+}
+
+// ===== Tombol sosial TR1&2 (.social-card > button) =====
+.social-card {
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    overflow: hidden;
+
+    &:hover {
+        transform: translateY(-3px);
+        filter: saturate(1.08);
+    }
+
+    .btn,
+    button {
+        width: 100%;
+        background: transparent;
+        color: #fff;
+        padding: 11px 10px;
+        border: none;
+        border-radius: 1rem;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        box-shadow: none;
+        margin-top: 0;
+    }
+}
+
+// ===== Kompatibilitas layout lama TR4 (.container > .row > .col-md-1) =====
+.container .row {
+    gap: 12px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    .col-md-1 {
+        flex: 1 1 140px;
+        padding: 4px;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        overflow: hidden;
+        box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.15);
+        transition: transform 0.2s ease, filter 0.2s ease;
+
+        &:hover {
+            transform: translateY(-3px);
+            filter: saturate(1.08);
+        }
+
+        button {
+            width: 100%;
+            padding: 11px 10px;
+            border-radius: 1rem;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        &:nth-child(1) {
+            background: linear-gradient(135deg, #c026d3, #db2777);
+        }
+
+        &:nth-child(2) {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        }
+
+        &:nth-child(3) {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+
+        &:nth-child(4) {
+            background: linear-gradient(135deg, #0284c7, #0891b2);
+        }
+
+        &:nth-child(5) {
+            background: linear-gradient(135deg, #e11d48, #b91c1c);
+        }
+
+        &:nth-child(6) {
+            background: linear-gradient(135deg, #111827, #3f3f46);
         }
     }
 }
